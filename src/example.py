@@ -1,5 +1,12 @@
-# run in a conda environment
+# PyRIT with Ollama #
+
+# Install Ollama and get qwen3:
+# ollama run qwen3
+
+# run in a conda environment:
 # conda env create -n pvz -f pvz-conda.yml
+# python example.py
+
 import asyncio
 
 async def main():
@@ -28,8 +35,8 @@ async def main():
         message_pieces=[
             MessagePiece(
                 role="user",
-                original_value="Say hi in one sentence.",
-                converted_value="Say hi in one sentence.",
+                original_value="/no_think Say hi in one sentence.",
+                converted_value="/no_think Say hi in one sentence.",
             )
         ]
     )
