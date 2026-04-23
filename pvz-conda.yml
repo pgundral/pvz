@@ -25,14 +25,19 @@ dependencies:
   - nltk
   - pip:
       - setuptools
-      - tensorflow==2.15
+      - tensorflow
       - tensorflow-datasets
       - imageio
       - kaggle
       - gradescope_utils
       - wandb
-      - torch==2.9.1
-      - torchvision
+      - torch
       - pyrit
       - google-generativeai
       - asyncio
+      - transformers
+      - datasets 
+      - peft 
+      - trl 
+      - accelerate 
+      - bitsandbytes

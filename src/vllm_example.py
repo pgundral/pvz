@@ -1,7 +1,10 @@
-# PyRIT with Ollama #
+# PyRIT with vLLM #
 
-# Install Ollama and get qwen3:
-# ollama run qwen3
+# Install vLLM and serve a local server for qwen3:
+# NOTE: If using Metal GPU, install vllm-metal plugin
+# vllm serve Qwen/Qwen3-0.6B
+
+# NOTE: By default, this exposes an OpenAI compatible endpoint at port 8000
 
 # run in a conda environment:
 # conda env create -n pvz -f pvz-conda.yml
@@ -22,21 +25,22 @@ async def main():
     memory = CentralMemory.get_memory_instance()
     print("Memory initialized")
 
+    # connect to vLLM chat target at http://localhost:8000/v1
     objective_target = OpenAIChatTarget(
-        api_key="ollama",
-        endpoint="http://localhost:11434/v1",  # no /chat/completions
-        model_name="qwen3",
+        api_key="EMPTY",
+        endpoint="http://localhost:8000/v1",  # no /chat/completions
+        model_name="Qwen/Qwen3-0.6B",
     )
 
-    print("Ollama target ready")
+    print("vLLM target ready")
 
     # Quick sanity test
     msg = Message(
         message_pieces=[
             MessagePiece(
                 role="user",
-                original_value="/no_think Say hi in one sentence.",
-                converted_value="/no_think Say hi in one sentence.",
+                original_value="Say hi in one sentence. /no_think ",
+                converted_value="Say hi in one sentence. /no_think",
             )
         ]
     )
