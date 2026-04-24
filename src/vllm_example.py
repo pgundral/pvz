@@ -1,10 +1,21 @@
 # PyRIT with vLLM #
 
+MODEL_NAME = "Qwen/Qwen3-0.6B"
+
 # Install vLLM and serve a local server for qwen3:
 # NOTE: If using Metal GPU, install vllm-metal plugin
 # vllm serve Qwen/Qwen3-0.6B
 
 # NOTE: By default, this exposes an OpenAI compatible endpoint at port 8000
+
+# NOTE: To enable fine-tuning with a LoRA adapter we can do
+# vllm serve Qwen/Qwen3-0.6B \
+#   --host 0.0.0.0 \
+#   --port 8000 \
+#   --api-key local-key \
+#   --enable-lora \
+#   --lora-modules biasfix=./qwen-bias-lora \
+#   --served-model-name qwen-biasfix
 
 # run in a conda environment:
 # conda env create -n pvz -f pvz-conda.yml
@@ -27,9 +38,9 @@ async def main():
 
     # connect to vLLM chat target at http://localhost:8000/v1
     objective_target = OpenAIChatTarget(
-        api_key="EMPTY",
+        api_key="local-key",
         endpoint="http://localhost:8000/v1",  # no /chat/completions
-        model_name="Qwen/Qwen3-0.6B",
+        model_name="qwen-biasfix",
     )
 
     print("vLLM target ready")
