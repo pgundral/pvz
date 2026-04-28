@@ -4,6 +4,7 @@ MODEL_NAME = "Qwen/Qwen3-0.6B"
 
 # Install vLLM and serve a local server for qwen3:
 # NOTE: If using Metal GPU, install vllm-metal plugin
+# source ~/.venv-vllm-metal/bin/activate
 # vllm serve Qwen/Qwen3-0.6B
 
 # NOTE: By default, this exposes an OpenAI compatible endpoint at port 8000
@@ -14,7 +15,7 @@ MODEL_NAME = "Qwen/Qwen3-0.6B"
 #   --port 8000 \
 #   --api-key local-key \
 #   --enable-lora \
-#   --lora-modules biasfix=./qwen-bias-lora \
+#   --lora-modules biasfix=./data/qwen-bias-lora \
 #   --served-model-name qwen-biasfix
 
 # run in a conda environment:
