@@ -4,10 +4,10 @@ from peft import LoraConfig
 from trl import SFTTrainer, SFTConfig
 
 MODEL_NAME = "Qwen/Qwen3-0.6B"
-OUTPUT_DIR = "./data"
+OUTPUT_DIR = "./data/qwen-bias-lora"
 
 def main():
-    dataset = load_dataset("json", data_files="./data/bias_sft.jsonl", split="train")
+    dataset = load_dataset("json", data_files="./data/harm_response_lora.jsonl", split="train")
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, use_fast=True)
     if tokenizer.pad_token is None:

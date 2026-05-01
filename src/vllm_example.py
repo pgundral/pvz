@@ -15,8 +15,8 @@ MODEL_NAME = "Qwen/Qwen3-0.6B"
 #   --port 8000 \
 #   --api-key local-key \
 #   --enable-lora \
-#   --lora-modules biasfix=./data/qwen-bias-lora \
-#   --served-model-name qwen-biasfix
+#   --lora-modules biasfix=./data/lora_adapters/qwen3_lora_adapter_qwen3-{size} \
+#   --served-model-name qwen3:{size}-fix
 
 # run in a conda environment:
 # conda env create -n pvz -f pvz-conda.yml
