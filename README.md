@@ -1,20 +1,20 @@
 # Red-Teaming Low-Parameter LLMs for Racial and Gender Bias
 ## Abstract
 
-Red Teaming is an adversarial evaluation process whereby thousands of prompt “attacks” are sent to LLMs to determine their behavior under various stressors, and responses are automatically evaluated by a separate "judge" model. Currently, there is a gap in understanding the efficacy of standard red teaming practices on small language models (SLMs) which have <10B parameters, since their behavior is unstable. Model families like Qwen3 are released as open source tools, but there is little incentive to evaluate their base safety behaviors since developers are expected to build their own guardrails. Here, we aim to develop a reduced red-teaming pipeline that can run locally to evaluate SLMs in the Qwen3 family. We also test the effectiveness of model level guardrails like low-rank adaption (LoRA) vs. the standard prompt/user level methods. We hope to advance the work of democratizing model evaluation and methods for improving safety of open-source models so developers and users alike are incentivized to do the work and share warnings with transparency. 
+Red Teaming is an adversarial evaluation process whereby thousands of prompt “attacks” are sent to LLMs to determine their behavior under various stressors, and responses are automatically evaluated by a separate "judge" model. Currently, there is a gap in understanding the efficacy of standard red teaming practices on small language models (SLMs) which have <10B parameters, since their behavior is unstable. Model families like Qwen3 are released as open source tools, but there is little incentive to evaluate their base safety behaviors since developers are expected to build their own guardrails. Here, we aim to develop a reduced red-teaming pipeline that can run locally to evaluate SLMs in the Qwen3 family. We also test the effectiveness of model level guardrails like low-rank adaption (LoRA) vs. the standard prompt/user level methods. We hope to advance the work of democratizing model evaluation and methods for improving safety of open-source models so developers and users alike are incentivized to do the work and share warnings with transparency. Paper can be found at 
 
 ## Poster
 
+![Research poster](./reports/poster.png)
+
+## Paper 
+A final research article for this project can be found in `reports/paper.pdf` or here:
+[Read the full paper](./reports/paper.pdf)
 
 ## Data
 
-__Adversarial prompts__
-[Latent Adversarial Training Improves Robustness to Persistent Harmful Behaviors in LLMs](https://arxiv.org/abs/2407.15549)
-[Bias in Open-ended Language Generation Dataset](https://github.com/amazon-science/bold)
-
-__Models__
-
-
+* __Adversarial prompts__: [Latent Adversarial Training Improves Robustness to Persistent Harmful Behaviors in LLMs](https://arxiv.org/abs/2407.15549)
+* __Open-eneded generation__: [Bias in Open-ended Language Generation Dataset](https://github.com/amazon-science/bold)
 
 ## Requirements
 
@@ -52,6 +52,7 @@ objective_target = OpenAIChatTarget(
         model_name="<MODEL_NAME>",
     )
 ```
+
 
 ## Contributors
 * Zak Hashi | `zhashi12`
