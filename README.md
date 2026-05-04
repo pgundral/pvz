@@ -1,20 +1,19 @@
 # Red-Teaming Low-Parameter LLMs for Racial and Gender Bias
-## Abstract (edit pls)
+## Abstract
 
-Small LLMs (<8 B parameters) are efficient and can run locally on consumer machines, saving compute and cloud resources. Their usefulness for simple tasks or integration into consumer software/products is undeniable, but developers publish varying claims about safety features or bias mitigation built into the models. 
+Red Teaming is an adversarial evaluation process whereby thousands of prompt “attacks” are sent to LLMs to determine their behavior under various stressors, and responses are automatically evaluated by a separate "judge" model. Currently, there is a gap in understanding the efficacy of standard red teaming practices on small language models (SLMs) which have <10B parameters, since their behavior is unstable. Model families like Qwen3 are released as open source tools, but there is little incentive to evaluate their base safety behaviors since developers are expected to build their own guardrails. Here, we aim to develop a reduced red-teaming pipeline that can run locally to evaluate SLMs in the Qwen3 family. We also test the effectiveness of model level guardrails like low-rank adaption (LoRA) vs. the standard prompt/user level methods. We hope to advance the work of democratizing model evaluation and methods for improving safety of open-source models so developers and users alike are incentivized to do the work and share warnings with transparency. 
 
-Red Teaming is an adversarial evaluation process whereby prompt “attacks” are sent to LLMs to determine their behavior under various stressors (hypotheticals, educational framing, prompt encoding). 
+## Poster
 
-We use the PyRIT testing framework and locally hosted models on vLLM to probe for safety guardrails and racial/gender bias on various axes (representational, stereotyping, classification) for a host of chat tasks and targets. 
-
-We investigate the appearance of bias in terms of model size and developer claims and test mitigation techniques like system prompt engineering, keyword detection, and LoRA/QLoRA fine-tuning to determine their effectiveness on small models. 
-
-The goal of this project is 2-fold: (1) to investigate bias through red-teaming in small LLMs and (2) to determine if small LLMs are effective within a red-teaming pipeline (even acting as LLM-as-Judge scorers) so they can be used as proxies for evaluation on larger LLMs in the same family.
 
 ## Data
 
 __Adversarial prompts__
-[RedBench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models](https://arxiv.org/html/2601.03699v1)
+[Latent Adversarial Training Improves Robustness to Persistent Harmful Behaviors in LLMs](https://arxiv.org/abs/2407.15549)
+[Bias in Open-ended Language Generation Dataset](https://github.com/amazon-science/bold)
+
+__Models__
+
 
 
 ## Requirements
@@ -45,7 +44,7 @@ If using a trained (Q)LoRA adjustment, include the following
   --lora-modules biasfix=path/to/safetensors \
   --served-model-name <NEW_MODEL_NAME>
 ```
-The API will be accessible to the PyRIT framework as an `OpenAIChatTarget`:
+The API will be accessible to the any OpenAI compatible framework. For example, in PyRIT, you can use the `OpenAIChatTarget` as follows:
 ```python
 objective_target = OpenAIChatTarget(
         api_key="<OPTIONAL_KEY>",
